@@ -208,11 +208,11 @@ struct PROTOBUF_EXPORT SCCInfoBase {
 
 // Zero-length arrays are a language extension available in GCC and Clang but
 // not MSVC.
-#ifdef __GNUC__
-#define PROTOBUF_ARRAY_SIZE(n) (n)
-#else
-#define PROTOBUF_ARRAY_SIZE(n) ((n) ? (n) : 1)
-#endif
+//#ifdef __GNUC__
+//#define PROTOBUF_ARRAY_SIZE(n) (n)
+//#else
+#define PROTOBUF_ARRAY_SIZE(n) ((n) ? (n) : 1) //patch for compiling with c++11 and pedentic option
+//#endif
 
 template <int N>
 struct SCCInfo {
