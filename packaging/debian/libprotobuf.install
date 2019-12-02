@@ -1,4 +1,0 @@
-usr/include/*
-usr/lib/*/libprotobuf.so
-usr/lib/*/libprotobuf.so.*
-usr/lib/*/pkgconfig/protobuf.pc

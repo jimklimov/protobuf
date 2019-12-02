@@ -1,2 +1,5 @@
-usr/lib/*/libprotoc.so
+usr/include/*
+usr/lib/*/libprotobuf.so
+usr/lib/*/pkgconfig/protobuf.pc
+usr/lib/*/libprotoc.so*
 usr/bin/protoc

@@ -1,42 +1,20 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-DRAFTS=no
-DOCS=no
-
-# OBS build: add
-#   Macros:
-#   %_with_drafts 1
-# at the BOTTOM of the OBS prjconf
-OBS_BUILD_CFG=/.build/build.dist
-ifeq ("$(wildcard $(OBS_BUILD_CFG))","")
-BUILDCONFIG=$(shell ls -1 /usr/src/packages/SOURCES/_buildconfig* | head -n 1)
-endif
-ifneq ("$(wildcard $(OBS_BUILD_CFG))","")
-ifneq ("$(shell grep drafts $(OBS_BUILD_CFG))","")
-DRAFTS=yes
-endif
-endif
-
-# User build: DEB_BUILD_OPTIONS=drafts dpkg-buildpackage
-ifneq (,$(findstring drafts,$(DEB_BUILD_OPTIONS)))
-DRAFTS=yes
-endif
+#export DEB_CXXFLAGS_MAINT_APPEND := --std=c++11
+#DEB_HOST_MULTIARCH      := $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+#UPSTREAM_VERSION        := $(shell dpkg-parsechangelog | sed -n 's/^Version: *\([0-9]*:\)\?\([^~]*\)\(~.*\)\?-.*$$/\2/ p')
+#d = $(CURDIR)/debian
 
 # Workaround for automake < 1.14 bug
 $(shell dpkg --compare-versions `dpkg-query -W -f='$${Version}\n' automake` lt 1:1.14 && mkdir -p config)
 $(shell test -f src/Makemodule-local.am || touch src/Makemodule-local.am)
 
 override_dh_strip:
-	echo "Skipped for now"
+	dh_strip --dbg-package=libprotobuf-dbg
 
 override_dh_auto_test:
 	echo "Skipped for now"
-
-override_dh_auto_configure:
-	dh_auto_configure -- \
-		--with-docs=$(DOCS) \
-		--enable-drafts=$(DRAFTS)
 
 %:
 	dh $@ \

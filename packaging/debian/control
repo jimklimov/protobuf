@@ -1,5 +1,5 @@
 #
-#    fty-common-messagebus - Provides message bus for agents
+#    protobuf - Provides message bus for agents
 #
 #    Copyright (C) 2014 - 2019 Eaton
 #
@@ -17,63 +17,58 @@
 #    with this program; if not, write to the Free Software Foundation, Inc.,
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-Source:         fty-common-messagebus
-Section:        net
-Priority:       optional
-Maintainer:     fty-common-messagebus Developers <eatonipcopensource@eaton.com>
+Source:         protobuf
+Section:        libs
+Priority:       extra
+Maintainer:     42ity Developers <eatonipcopensource@eaton.com>
 Standards-Version: 4.0.1.0
+Vcs-Git: git://git.debian.org/collab-maint/log4cplus.git
 Build-Depends: debhelper (>= 9),
-    pkg-config,
-    libsodium-dev,
-    libzmq3-dev,
-    libczmq-dev (>= 3.0.2),
-    libmlm-dev (>= 1.0.0),
-    libcxxtools-dev,
-    libfty-common-dto-dev (>= 1.0.0),
-    liblog4cplus-dev,
-    libfty-common-logging-dev,
-    asciidoc-base | asciidoc, xmlto,
-    dh-autoreconf
+        dh-autoreconf,
+        pkg-config,
+        automake
 
-Package: libfty-common-messagebus1
+Package: libprotobuf
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: fty-common-messagebus shared library
- This package contains shared library for fty-common-messagebus:
- provides message bus for agents
+Section: libs
+Depends: ${shlibs:Depends}, 
+    libprotobuf-22 (= ${binary:Version})
+Description: protobuf shared library
+ This package contains shared library for protobuf:
+ provides protobuf for agents
 
-Package: libfty-common-messagebus-dev
+Package: libprotobuf-22
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+    ${misc:Depends}
+Description: protobuf shared library
+ This package contains shared library for protobuf:
+ provides protobuf for agents
+
+Package: libprotobuf-dev
 Architecture: any
 Section: libdevel
 Depends:
     ${misc:Depends},
-    libsodium-dev,
-    libzmq3-dev,
-    libczmq-dev (>= 3.0.2),
-    libmlm-dev (>= 1.0.0),
-    libcxxtools-dev,
-    libfty-common-dto-dev (>= 1.0.0),
-    liblog4cplus-dev,
-    libfty-common-logging-dev,
-    libfty-common-messagebus1 (= ${binary:Version})
-Description: fty-common-messagebus development tools
- This package contains development files for fty-common-messagebus:
- provides message bus for agents
+    libprotobuf-22 (= ${binary:Version})
+Description: protobuf development tools
+ This package contains development files for protobuf:
+ provides protobuf for agents.
+ .
+ This package contains the header files and static library for 
+ developers.
 
-Package: fty-common-messagebus
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
-Description: runnable binaries from fty-common-messagebus
- Main package for fty-common-messagebus:
- provides message bus for agents
-
-Package: fty-common-messagebus-dbg
-Architecture: any
+ackage: libprotobuf-dbg
 Section: debug
-Priority: optional
-Depends:
-    fty-common-messagebus (= ${binary:Version}),
-    ${misc:Depends}
-Description: fty-common-messagebus debugging symbols
- This package contains the debugging symbols for fty-common-messagebus:
- provides message bus for agents.
+Priority: extra
+Architecture: any
+Depends: ${misc:Depends},
+    libprotobuf-22 (= ${binary:Version})
+Description: protobuf development tools
+ This package contains development files for protobuf:
+ provides protobuf for agents.
+ .
+ This package is provided primarily to provide a backtrace with names
+ in a debugger, this makes it somewhat easier to interpret core
+ dumps.  Most people will not need this package.
