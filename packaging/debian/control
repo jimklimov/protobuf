@@ -59,7 +59,7 @@ Description: protobuf development tools
  This package contains the header files and static library for 
  developers.
 
-ackage: libprotobuf-dbg
+Package: libprotobuf-dbg
 Section: debug
 Priority: extra
 Architecture: any
