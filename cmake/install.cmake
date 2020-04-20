@@ -4,8 +4,10 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/protobuf.pc.cmake
                ${CMAKE_CURRENT_BINARY_DIR}/protobuf.pc @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/protobuf-lite.pc.cmake
                ${CMAKE_CURRENT_BINARY_DIR}/protobuf-lite.pc @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/protoc.pc.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/protoc.pc @ONLY)
 
-set(_protobuf_libraries libprotobuf-lite libprotobuf)
+set(_protobuf_libraries libprotobuf-lite libprotobuf libprotoc)
 if (protobuf_BUILD_PROTOC_BINARIES)
     list(APPEND _protobuf_libraries libprotoc)
 endif (protobuf_BUILD_PROTOC_BINARIES)

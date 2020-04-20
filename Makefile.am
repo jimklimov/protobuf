@@ -46,7 +46,7 @@ clean-local:
 	fi
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = protobuf.pc protobuf-lite.pc
+pkgconfig_DATA = protobuf.pc protobuf-lite.pc protoc.pc
 
 csharp_EXTRA_DIST=                                                           \
   global.json                                                                \
@@ -1222,6 +1222,7 @@ EXTRA_DIST = $(@DIST_LANG@_EXTRA_DIST)   \
   cmake/protobuf-options.cmake           \
   cmake/protobuf.pc.cmake                \
   cmake/protoc.cmake                     \
+  cmake/protoc.pc.cmake                  \
   cmake/tests.cmake                      \
   cmake/version.rc.in                    \
   compiler_config_setting.bzl            \
